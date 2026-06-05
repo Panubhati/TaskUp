@@ -1,0 +1,360 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TaskUp - Project Documentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a2e; line-height: 1.7; padding: 48px; max-width: 900px; margin: 0 auto; font-size: 13px; }
+  h1 { font-size: 32px; font-weight: 800; text-align: center; margin-bottom: 4px; color: #0f0f23; }
+  .subtitle { text-align: center; color: #6366f1; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .tagline { text-align: center; color: #64748b; font-size: 12px; margin-bottom: 32px; }
+  h2 { font-size: 20px; font-weight: 700; color: #1e1b4b; margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e0e7ff; }
+  h3 { font-size: 15px; font-weight: 700; color: #312e81; margin: 18px 0 8px; }
+  h4 { font-size: 13px; font-weight: 600; color: #4338ca; margin: 12px 0 6px; }
+  p { margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 16px; font-size: 12px; }
+  th { background: #eef2ff; color: #312e81; font-weight: 700; text-align: left; padding: 8px 10px; border: 1px solid #c7d2fe; }
+  td { padding: 6px 10px; border: 1px solid #e2e8f0; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  code { font-family: 'Fira Code', monospace; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 11.5px; }
+  pre { background: #1e1b4b; color: #e0e7ff; padding: 14px 18px; border-radius: 8px; overflow-x: auto; margin: 10px 0 16px; font-family: 'Fira Code', monospace; font-size: 11px; line-height: 1.6; white-space: pre-wrap; }
+  ul, ol { margin: 8px 0 12px 20px; }
+  li { margin-bottom: 4px; }
+  .section-badge { display: inline-block; background: #eef2ff; color: #4338ca; padding: 2px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin: 10px 0 16px; }
+  .box-warn { background: #fffbeb; border-color: #fde68a; }
+  .arch-box { background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 8px; padding: 16px; margin: 12px 0; }
+  .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0 16px; }
+  .feature-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; }
+  .feature-card strong { color: #312e81; font-size: 12.5px; }
+  .feature-card p { color: #64748b; font-size: 11.5px; margin: 4px 0 0; }
+  hr { border: none; border-top: 1px solid #e2e8f0; margin: 24px 0; }
+  .footer { text-align: center; color: #94a3b8; font-size: 11px; margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; }
+  @media print { body { padding: 24px; } h2 { page-break-after: avoid; } table, pre { page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<h1>⚡ TaskUp</h1>
+<div class="subtitle">AI-Powered Competitive Coding & Talent Assessment Platform</div>
+<div class="tagline">Full-Stack Web Application — Project Documentation v1.0</div>
+
+<h2>1. Project Overview</h2>
+<p><strong>TaskUp</strong> is a full-stack, AI-powered competitive coding and talent assessment platform that connects <strong>students</strong> (developers) with <strong>companies</strong> (recruiters). Students solve real-world coding challenges, take quizzes, complete assignments, and get ranked on live leaderboards. Companies create challenges, evaluate submissions with AI-driven analysis, and identify top talent.</p>
+
+<div class="feature-grid">
+  <div class="feature-card"><strong>🎓 For Students</strong><p>Solve challenges in 4 languages, get AI feedback, compete on leaderboards, AI resume evaluation</p></div>
+  <div class="feature-card"><strong>🏢 For Companies</strong><p>Create tasks/assignments/quizzes, AI-evaluated submissions with plagiarism detection, analytics dashboard</p></div>
+</div>
+
+<h2>2. Technology Stack</h2>
+<h3>Backend</h3>
+<table>
+  <tr><th>Technology</th><th>Purpose</th></tr>
+  <tr><td>Node.js + Express 5</td><td>REST API server</td></tr>
+  <tr><td>MongoDB + Mongoose 8</td><td>Database and ODM</td></tr>
+  <tr><td>JWT (jsonwebtoken)</td><td>Authentication & authorization</td></tr>
+  <tr><td>bcrypt</td><td>Password hashing</td></tr>
+  <tr><td>Groq SDK (LLaMA 3.3 70B)</td><td>AI code evaluation, optimization, plagiarism detection</td></tr>
+  <tr><td>Google Generative AI (Gemini)</td><td>AI capabilities</td></tr>
+  <tr><td>multer + pdf-parse</td><td>Resume PDF upload and text extraction</td></tr>
+  <tr><td>dotenv, cors</td><td>Config and cross-origin support</td></tr>
+</table>
+
+<h3>Frontend</h3>
+<table>
+  <tr><th>Technology</th><th>Purpose</th></tr>
+  <tr><td>React 19 (Create React App)</td><td>UI framework</td></tr>
+  <tr><td>React Router DOM 7</td><td>Client-side routing</td></tr>
+  <tr><td>Monaco Editor</td><td>In-browser code editor (VS Code engine)</td></tr>
+  <tr><td>Axios</td><td>HTTP client</td></tr>
+  <tr><td>Chakra UI + Emotion</td><td>Component library & styling</td></tr>
+  <tr><td>Framer Motion</td><td>Animations</td></tr>
+  <tr><td>Bootstrap 5</td><td>Additional UI components</td></tr>
+</table>
+
+<h2>3. Architecture</h2>
+<pre>
+┌───────────────────────────────────────────────────┐
+│              FRONTEND (React 19, Port 3000)       │
+│  Dashboard │ Solve │ Quizzes │ Company Dashboard  │
+│  Admin │ Resume │ Leaderboard │ Question Bank     │
+└────────────────────┬──────────────────────────────┘
+                     │ HTTP (Axios)
+                     ▼
+┌───────────────────────────────────────────────────┐
+│           BACKEND (Express 5, Port 5000)          │
+│  Middleware: authMiddleware │ companyOnly │ admin  │
+│  Routes: auth │ task │ assignment │ quiz │ resume  │
+│          company │ leaderboard │ questionBank      │
+│          codeEvaluate │ admin                      │
+│  AI Engine: Groq (LLaMA 3.3 70B) — compile,      │
+│    evaluate, optimize, plagiarism detect           │
+└────────────────────┬──────────────────────────────┘
+                     │ Mongoose ODM
+                     ▼
+┌───────────────────────────────────────────────────┐
+│         MongoDB (taskup database)                 │
+│  Collections: Users, Tasks, Assignments,          │
+│               Quizzes, Questions                  │
+└───────────────────────────────────────────────────┘
+</pre>
+
+<h2>4. User Roles & Permissions</h2>
+<table>
+  <tr><th>Role</th><th>Capabilities</th></tr>
+  <tr><td><strong>Student</strong></td><td>Sign up with profile, solve tasks, take quizzes, complete assignments, view leaderboard, upload resume for AI evaluation</td></tr>
+  <tr><td><strong>Company</strong></td><td>Sign up (pending approval), create tasks/assignments/quizzes, view submissions & analytics, manage question bank</td></tr>
+  <tr><td><strong>Admin</strong></td><td>Approve/reject companies, view platform stats, manage all users, delete accounts</td></tr>
+</table>
+
+<h2>5. Database Models</h2>
+
+<h3>User Model</h3>
+<table>
+  <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+  <tr><td>username</td><td>String (unique)</td><td>Login username</td></tr>
+  <tr><td>password</td><td>String</td><td>Bcrypt-hashed password</td></tr>
+  <tr><td>role</td><td>Enum: student/company/admin</td><td>User role</td></tr>
+  <tr><td>status</td><td>Enum: pending/approved/rejected</td><td>Company approval status</td></tr>
+  <tr><td>email, phone, dob, college, city, qualifyingYear</td><td>Various</td><td>Student profile fields</td></tr>
+  <tr><td>companyName, industry, companySize, website, companyDescription</td><td>Various</td><td>Company profile fields</td></tr>
+</table>
+
+<h3>Task Model</h3>
+<p>Contains title, description, author (company), examples, hidden test cases, and embedded submissions. Each submission includes: user, code, language, score, testCasesPassed, timeTakenSeconds, and <code>aiAnalysis</code> (timeComplexity, spaceComplexity, optimizationNotes, feedback).</p>
+
+<h3>Question Model (Question Bank)</h3>
+<p>Reusable coding questions with title, description, difficulty (Easy/Medium/Hard), category, tags, constraints, examples, test cases, and language-specific starter code templates (JS, Python, C++, Java).</p>
+
+<h3>Assignment Model</h3>
+<p>Multi-question assessment: references Question IDs, has deadline, time limit, max submissions per question. Submissions include correctnessScore, optimizationScore, plagiarismScore, and finalScore.</p>
+<div class="box"><strong>Scoring Formula:</strong> <code>finalScore = correctness × 50% + optimization × 30% + originality × 20%</code></div>
+
+<h3>Quiz Model</h3>
+<p>MCQ quizzes with 4-option questions, time limits, single-attempt enforcement, and anti-cheat (tab-switching detection with 3-strike ban, banned user tracking).</p>
+
+<h2>6. API Endpoints</h2>
+
+<h3>Authentication — <code>/api/auth</code></h3>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/signup</td><td>Register (student/company)</td></tr>
+  <tr><td>POST</td><td>/login</td><td>Login → returns JWT token</td></tr>
+</table>
+
+<h3>Tasks — <code>/api/tasks</code></h3>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/</td><td>Company</td><td>Create a coding task</td></tr>
+  <tr><td>GET</td><td>/</td><td>Auth</td><td>List tasks</td></tr>
+  <tr><td>GET</td><td>/:id</td><td>Public</td><td>Get task detail with stats</td></tr>
+  <tr><td>POST</td><td>/evaluate</td><td>Auth</td><td>Submit code for AI evaluation</td></tr>
+  <tr><td>GET</td><td>/:id/submissions</td><td>Company</td><td>View all submissions</td></tr>
+  <tr><td>GET</td><td>/:id/my-submissions</td><td>Student</td><td>View own submissions</td></tr>
+</table>
+
+<h3>Assignments — <code>/api/assignments</code></h3>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/</td><td>Company</td><td>Create from question IDs</td></tr>
+  <tr><td>GET</td><td>/</td><td>Auth</td><td>List assignments</td></tr>
+  <tr><td>GET</td><td>/:id</td><td>Auth</td><td>Get detail</td></tr>
+  <tr><td>POST</td><td>/:id/submit</td><td>Student</td><td>Submit solution (AI-evaluated)</td></tr>
+  <tr><td>GET</td><td>/:id/leaderboard</td><td>Auth</td><td>Ranked leaderboard</td></tr>
+  <tr><td>GET</td><td>/:id/my-submissions</td><td>Student</td><td>Own submissions</td></tr>
+</table>
+
+<h3>Quizzes — <code>/api/quizzes</code></h3>
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/</td><td>Company</td><td>Create quiz</td></tr>
+  <tr><td>GET</td><td>/</td><td>Auth</td><td>List quizzes</td></tr>
+  <tr><td>GET</td><td>/:id</td><td>Auth</td><td>Get detail (answers hidden)</td></tr>
+  <tr><td>POST</td><td>/:id/submit</td><td>Student</td><td>Submit quiz (single attempt)</td></tr>
+  <tr><td>GET</td><td>/:id/leaderboard</td><td>Company</td><td>Quiz leaderboard</td></tr>
+  <tr><td>POST</td><td>/:id/tab-violation</td><td>Student</td><td>Report tab switch</td></tr>
+</table>
+
+<h3>Other Endpoints</h3>
+<table>
+  <tr><th>Route</th><th>Key Endpoints</th></tr>
+  <tr><td><code>/api/code</code></td><td>POST /evaluate (run against test cases), POST /run (custom input)</td></tr>
+  <tr><td><code>/api/resume</code></td><td>POST /evaluate (upload PDF → AI scoring)</td></tr>
+  <tr><td><code>/api/questions</code></td><td>GET / (list), GET /:id (detail), POST / (create), DELETE /:id</td></tr>
+  <tr><td><code>/api/company</code></td><td>GET /dashboard (analytics), PUT /details (company profile)</td></tr>
+  <tr><td><code>/api/admin</code></td><td>GET /stats, GET /companies, PUT approve/reject, GET /users, DELETE</td></tr>
+  <tr><td><code>/api/leaderboard</code></td><td>GET / (global leaderboard aggregating all activities)</td></tr>
+</table>
+
+<h2>7. Key Features</h2>
+
+<h3>7.1 AI Code Evaluation Engine</h3>
+<ul>
+  <li>Uses <strong>Groq SDK</strong> with <strong>LLaMA 3.3 70B</strong> model</li>
+  <li><strong>Programmatic syntax pre-check</strong>: Validates brackets, strings, comments before AI</li>
+  <li><strong>Correctness evaluation</strong>: AI traces code as a strict compiler against test cases</li>
+  <li><strong>Optimization analysis</strong>: Time/space complexity, score (0-100), feedback</li>
+  <li><strong>Plagiarism & AI detection</strong>: Compares against existing submissions, detects AI-generated patterns</li>
+</ul>
+
+<h3>7.2 Multi-Language Code Editor</h3>
+<ul>
+  <li><strong>Monaco Editor</strong> (VS Code engine) supporting JavaScript, Python, C++, Java</li>
+  <li>Language-specific starter templates, custom input testing, full test case evaluation</li>
+</ul>
+
+<h3>7.3 Quiz Anti-Cheat System</h3>
+<ul>
+  <li>Full-screen enforcement, tab-switching detection (3-strike ban)</li>
+  <li>Server-side timer validation with 5-second grace period</li>
+  <li>Single attempt per quiz, unanswered questions excluded from scoring</li>
+</ul>
+
+<h3>7.4 Resume Evaluation</h3>
+<ul>
+  <li>PDF upload (max 5MB), evaluates 7 categories (100 pts total)</li>
+  <li>Contact Info (15), Education (15), Experience (20), Skills (15), Formatting (15), Certs (10), Summary (10)</li>
+  <li>Letter grade (A+ to D) with actionable suggestions</li>
+</ul>
+
+<h3>7.5 Global Leaderboard</h3>
+<p>Aggregates best scores across all tasks, assignments, and quizzes per student. Sortable with breakdowns by category.</p>
+
+<h3>7.6 Company Analytics Dashboard</h3>
+<p>Overview metrics, score distribution, per-assignment breakdown, top performers, and recent submissions feed.</p>
+
+<h2>8. Frontend Pages</h2>
+<table>
+  <tr><th>Page</th><th>Route</th><th>Role</th><th>Description</th></tr>
+  <tr><td>Dashboard</td><td>/</td><td>All</td><td>Landing page with hero, features, FAQ</td></tr>
+  <tr><td>Login / Signup</td><td>/login, /signup</td><td>All</td><td>Authentication forms</td></tr>
+  <tr><td>Compete</td><td>/compete</td><td>Student</td><td>Browse coding tasks</td></tr>
+  <tr><td>Solve</td><td>/solve?taskId=</td><td>Student</td><td>Monaco editor, timer, submit</td></tr>
+  <tr><td>Assignments</td><td>/assignments</td><td>Both</td><td>List & detail views</td></tr>
+  <tr><td>Quizzes</td><td>/quizzes</td><td>Both</td><td>List, create, take quizzes</td></tr>
+  <tr><td>Leaderboard</td><td>/leaderboard</td><td>Both</td><td>Global rankings</td></tr>
+  <tr><td>Question Bank</td><td>/question-bank</td><td>Company</td><td>Browse/create questions</td></tr>
+  <tr><td>Resume Eval</td><td>/resume-evaluation</td><td>Student</td><td>PDF upload + AI scoring</td></tr>
+  <tr><td>Company Dashboard</td><td>/company-dashboard</td><td>Company</td><td>Analytics & metrics</td></tr>
+  <tr><td>Admin</td><td>/admin</td><td>Admin</td><td>User & company management</td></tr>
+</table>
+
+<h2>9. Directory Structure</h2>
+<pre>
+TaskUp/
+├── backend/
+│   ├── server.js              # Express entry point
+│   ├── .env                   # Environment variables
+│   ├── middleware/
+│   │   ├── authMiddleware.js  # JWT verification
+│   │   ├── adminOnly.js       # Admin role guard
+│   │   └── companyOnly.js     # Company role guard
+│   ├── models/
+│   │   ├── User.js            # User schema
+│   │   ├── Task.js            # Task + submissions
+│   │   ├── Assignment.js      # Multi-question assessment
+│   │   ├── Quiz.js            # MCQ quiz + anti-cheat
+│   │   └── Question.js        # Question bank item
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── taskController.js
+│   │   ├── assignmentController.js
+│   │   └── quizController.js
+│   ├── routes/                # 10 route modules
+│   ├── data/questionBank.js   # Seed data (43KB)
+│   └── scripts/               # seedAdmin.js, seedQuestions.js
+│
+├── frontend/
+│   └── src/
+│       ├── App.js             # Root + routing (20 routes)
+│       ├── components/        # Navbar, TaskDetail, TaskList, Profile
+│       └── pages/             # 19 page components
+</pre>
+
+<h2>10. Setup & Installation</h2>
+<h3>Prerequisites</h3>
+<ul>
+  <li>Node.js v18+</li>
+  <li>MongoDB running locally on port 27017</li>
+  <li>Groq API Key for AI code evaluation</li>
+</ul>
+
+<h3>Backend</h3>
+<pre>
+cd backend
+npm install
+# Configure .env (PORT, MONGO_URI, JWT_SECRET, GROQ_API_KEY, GEMINI_API_KEY)
+node scripts/seedAdmin.js      # Create admin account (one-time)
+node scripts/seedQuestions.js   # Populate question bank (one-time)
+npm start                       # or: npm run dev (nodemon)
+</pre>
+
+<h3>Frontend</h3>
+<pre>
+cd frontend
+npm install
+npm start                       # Opens http://localhost:3000
+</pre>
+
+<div class="box box-warn">
+  <strong>Default Admin Credentials:</strong> Username: <code>admin</code> | Password: <code>admin123</code>
+</div>
+
+<h2>11. Environment Variables</h2>
+<table>
+  <tr><th>Variable</th><th>Description</th></tr>
+  <tr><td>PORT</td><td>Backend server port (default: 5000)</td></tr>
+  <tr><td>MONGO_URI</td><td>MongoDB connection string</td></tr>
+  <tr><td>JWT_SECRET</td><td>Secret key for JWT signing</td></tr>
+  <tr><td>GROQ_API_KEY</td><td>Groq API key for LLaMA code evaluation</td></tr>
+  <tr><td>GEMINI_API_KEY</td><td>Google Gemini API key</td></tr>
+</table>
+
+<h2>12. Security Features</h2>
+<ul>
+  <li><strong>Password Hashing</strong>: bcrypt with 10 salt rounds</li>
+  <li><strong>JWT Authentication</strong>: Token-based auth with role claims</li>
+  <li><strong>Role-Based Access Control</strong>: Three middleware guards</li>
+  <li><strong>Company Approval Gate</strong>: Companies blocked until admin approval</li>
+  <li><strong>Quiz Anti-Cheat</strong>: Tab-switching ban, full-screen, server-side timer</li>
+  <li><strong>Submission Limits</strong>: Configurable max per task/assignment</li>
+  <li><strong>File Upload Security</strong>: PDF-only, 5MB limit for resumes</li>
+</ul>
+
+<h2>13. Testing</h2>
+
+<h3>13.1 Integration Testing Table</h3>
+<table>
+  <tr><th>Integrated Modules</th><th>Test Objective</th><th>Expected Output</th><th>Actual Result</th><th>Status</th></tr>
+  <tr><td>Frontend → Backend Auth</td><td>Login/signup requests correctly sent to backend API</td><td>JWT token returned on success</td><td>Works properly</td><td>Passed</td></tr>
+  <tr><td>Backend → MongoDB</td><td>CRUD operations on Users, Tasks, Quizzes, Assignments</td><td>Data persisted and retrieved correctly</td><td>Correct</td><td>Passed</td></tr>
+  <tr><td>Code Submission → Groq AI</td><td>End-to-end code evaluation via LLaMA 3.3 70B</td><td>Correctness score, complexity analysis, feedback JSON</td><td>As expected</td><td>Passed</td></tr>
+  <tr><td>Resume Upload → AI Evaluation</td><td>PDF upload via multer → text extraction → AI scoring</td><td>7-category score breakdown with letter grade</td><td>Works as expected</td><td>Passed</td></tr>
+  <tr><td>Quiz Submission → Anti-Cheat</td><td>Tab-violation reports integrated with quiz scoring</td><td>3-strike ban enforced, score recorded</td><td>Correct</td><td>Passed</td></tr>
+  <tr><td>Assignment → Question Bank</td><td>Assignment creation referencing Question IDs</td><td>Questions correctly linked and retrieved</td><td>Works properly</td><td>Passed</td></tr>
+  <tr><td>Leaderboard → Aggregation</td><td>Combine scores across tasks, assignments, and quizzes</td><td>Unified ranked leaderboard JSON</td><td>As expected</td><td>Passed</td></tr>
+</table>
+
+<h3>13.2 Functional Testing Table</h3>
+<table>
+  <tr><th>Feature / Module</th><th>Test Objective</th><th>Expected Output</th><th>Actual Result</th><th>Status</th></tr>
+  <tr><td>User Registration</td><td>Student and company signup with validation</td><td>Account created, company set to pending</td><td>Works fine</td><td>Passed</td></tr>
+  <tr><td>JWT Authentication</td><td>Protected routes reject unauthenticated requests</td><td>401 Unauthorized returned</td><td>Correct</td><td>Passed</td></tr>
+  <tr><td>Role-Based Access</td><td>Company-only and admin-only routes block students</td><td>403 Forbidden returned</td><td>Correct</td><td>Passed</td></tr>
+  <tr><td>Code Editor (Monaco)</td><td>Multi-language support (JS, Python, C++, Java)</td><td>Syntax highlighting and starter templates load</td><td>Works fine</td><td>Passed</td></tr>
+  <tr><td>Task Submission</td><td>Submit code with timer and submission limits</td><td>AI evaluation score and feedback returned</td><td>As expected</td><td>Passed</td></tr>
+  <tr><td>Quiz Anti-Cheat</td><td>Full-screen enforcement and tab-switch detection</td><td>Warning on switch, ban after 3 strikes</td><td>Correct</td><td>Passed</td></tr>
+  <tr><td>Resume PDF Upload</td><td>Accept valid PDF, reject non-PDF and oversized files</td><td>Error message for invalid files, score for valid</td><td>Works fine</td><td>Passed</td></tr>
+  <tr><td>Company Approval</td><td>Admin approves/rejects pending company accounts</td><td>Status updated, company gains dashboard access</td><td>As expected</td><td>Passed</td></tr>
+  <tr><td>Plagiarism Detection</td><td>Detect similar code across submissions</td><td>Plagiarism score flagged in evaluation</td><td>Correct</td><td>Passed</td></tr>
+  <tr><td>Global Leaderboard</td><td>Display ranked students with score breakdowns</td><td>Sortable table with per-category scores</td><td>Works fine</td><td>Passed</td></tr>
+</table>
+
+<div class="footer">
+  TaskUp Project Documentation v1.0 — Generated May 15, 2026
+</div>
+
+</body>
+</html>
