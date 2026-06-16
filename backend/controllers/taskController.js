@@ -76,7 +76,7 @@ async function groqCall(prompt) {
       { role: 'user', content: prompt },
     ],
     temperature: 0,
-    max_tokens: 2048,
+    max_tokens: 4096,
   });
   return response.choices[0]?.message?.content || '';
 }
@@ -110,7 +110,7 @@ ${code}
 Test cases:
 ${tcText}
 
-Respond with ONLY this raw JSON array:
+Respond with ONLY this raw JSON array (you MUST return EXACTLY ${testCases.length} results — one per test case, in order):
 [{"index":0,"actual":"<stdout or empty if error>","pass":<bool>,"error":"<error description or null>"}]`;
 
   const text = await groqCall(prompt);
@@ -266,6 +266,17 @@ const evaluateSubmission = async (req, res) => {
       console.error('Correctness eval failed:', e.message);
       correctnessResults = task.testCases.map((_, i) => ({ index: i, pass: false, error: e.message }));
     }
+
+    // Pad results to match test case count — LLM may return fewer
+    correctnessResults = task.testCases.map((tc, i) => {
+      const r = correctnessResults.find(x => x.index === i) || correctnessResults[i] || {};
+      return {
+        index: i,
+        actual: (r.actual ?? '').trim(),
+        pass: r.pass ?? false,
+        error: r.error ?? (r.pass === undefined ? 'Evaluation incomplete — test case was not evaluated' : null),
+      };
+    });
 
     const passed = correctnessResults.filter(r => r.pass).length;
     const total = task.testCases.length;

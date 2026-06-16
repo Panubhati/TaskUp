@@ -99,7 +99,7 @@ async function groqCall(apiKey, prompt) {
       { role: 'user', content: prompt },
     ],
     temperature: 0,
-    max_tokens: 2048,
+    max_tokens: 4096,
   });
   return response.choices[0]?.message?.content || '';
 }
@@ -164,20 +164,25 @@ ${code}
 Test cases:
 ${testCasesText}
 
+IMPORTANT: You MUST return EXACTLY ${testCases.length} results — one for each test case, in order.
 Respond with ONLY this raw JSON array:
 [{"index":0,"actual":"<stdout or empty if error>","pass":<bool>,"error":"<error description or null>"}]`;
 
     const text = await groqCall(apiKey, prompt);
-    let results = parseJson(text, 'array');
+    let rawResults = parseJson(text, 'array');
 
-    results = results.map((r, i) => ({
-      index: i,
-      input: testCases[i]?.input || '',
-      expected: testCases[i]?.expectedOutput || '',
-      actual: (r.actual ?? '').trim(),
-      pass: r.pass ?? false,
-      error: r.error ?? null,
-    }));
+    // Pad results to match test case count — LLM may return fewer
+    const results = testCases.map((tc, i) => {
+      const r = rawResults.find(x => x.index === i) || rawResults[i] || {};
+      return {
+        index: i,
+        input: tc.input || '',
+        expected: tc.expectedOutput || '',
+        actual: (r.actual ?? '').trim(),
+        pass: r.pass ?? false,
+        error: r.error ?? (r.pass === undefined ? 'Evaluation incomplete — test case was not evaluated' : null),
+      };
+    });
 
     res.json({ results });
   } catch (error) {
