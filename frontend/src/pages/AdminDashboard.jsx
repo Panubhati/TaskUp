@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const AdminDashboard = () => {
   const [actionLoading, setActionLoading] = useState('');
 
   const token = localStorage.getItem('token');
-  const headers = { Authorization: `Bearer ${token}` };
+  const headers = useMemo(() => ({ Authorization: `Bearer ${token}` }), [token]);
 
   useEffect(() => {
     const role = localStorage.getItem('role');
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  }, [userFilter]);
+  }, [userFilter, headers]);
 
   useEffect(() => { fetchAll(); }, [fetchAll]);
 

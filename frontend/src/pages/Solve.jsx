@@ -827,7 +827,7 @@ export default function Solve() {
                   {pastSubmissions.map((sub, idx) => {
                     const isExpanded = expandedSubId === sub._id;
                     const displayScore = sub.finalScore ?? sub.score ?? 0;
-                    const correctness = sub.correctnessScore ?? sub.score ?? 0;
+
                     const scoreColor = displayScore >= 80 ? "#10b981" : displayScore >= 50 ? "#f59e0b" : "#f43f5e";
                     const statusIcon = displayScore >= 80 ? "✓" : displayScore >= 50 ? "◐" : "✗";
                     const statusText = displayScore >= 80 ? "Accepted" : displayScore >= 50 ? "Partial" : "Wrong Answer";

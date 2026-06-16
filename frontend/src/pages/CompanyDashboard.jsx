@@ -13,7 +13,7 @@ const CompanyDashboard = () => {
   const token = localStorage.getItem('token');
   const role = localStorage.getItem('role');
   const username = localStorage.getItem('username') || 'Company';
-  const isDark = (localStorage.getItem('theme') || 'dark') === 'dark';
+
 
   useEffect(() => {
     if (!token || role !== 'company') { navigate('/login'); return; }

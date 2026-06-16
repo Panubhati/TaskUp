@@ -8,7 +8,7 @@ const TakeQuiz = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  const role = localStorage.getItem('role');
+
 
   const [quiz, setQuiz] = useState(null);
   const [loading, setLoading] = useState(true);

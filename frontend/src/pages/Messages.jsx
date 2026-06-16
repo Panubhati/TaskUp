@@ -198,7 +198,7 @@ export default function Messages() {
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 2 }}>
                     <span style={{
-                      fontSize: '0.75rem', color: T.textMuted, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                      fontSize: '0.75rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                       fontWeight: convo.unreadCount > 0 ? 600 : 400,
                       color: convo.unreadCount > 0 ? T.textSec : T.textMuted,
                     }}>

@@ -48,6 +48,7 @@ const QuestionBank = () => {
   useEffect(() => {
     fetchCategories();
     fetchQuestions();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

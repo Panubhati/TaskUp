@@ -8,7 +8,7 @@ const TakeAssessment = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  const role = localStorage.getItem('role');
+
 
   const [quiz, setQuiz] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -40,7 +40,7 @@ const TakeAssessment = () => {
   const [camReady, setCamReady] = useState(false);
   const [camError, setCamError] = useState('');
   const [snapshots, setSnapshots] = useState([]);
-  const [proctViolations, setProctViolations] = useState(0);
+
   const snapshotsRef = useRef([]);
   const proctViolationsRef = useRef(0);
 
@@ -194,7 +194,7 @@ const TakeAssessment = () => {
       exitFullscreen();
     }
     setSubmitting(false);
-  }, [answers, id, token, submitting]);
+  }, [answers, id, token, submitting, camReady]);
 
   // Webcam helpers
   const initWebcam = async () => {
