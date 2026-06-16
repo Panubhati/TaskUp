@@ -356,9 +356,6 @@ const submitSolution = async (req, res) => {
       });
     }
 
-    // AI Evaluation pipeline
-    console.log(`[AI] Evaluating submission for ${question.title}...`);
-
     // 1. Correctness
     let correctnessResults;
     try {

@@ -256,8 +256,6 @@ const evaluateSubmission = async (req, res) => {
       });
     }
 
-    console.log(`[AI] Evaluating task submission for "${task.title}"...`);
-
     // 1. Correctness evaluation
     let correctnessResults;
     try {

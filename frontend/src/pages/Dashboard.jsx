@@ -11,8 +11,7 @@ const Dashboard = () => {
     setVisible(true);
   }, []);
 
-  const stats = [
-  ];
+
 
   const steps = [
     { num: '01', title: 'Sign Up', desc: 'Create your account and choose your role — student or company.', icon: '🔐' },
@@ -255,20 +254,7 @@ const S = {
     cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.25s ease',
   },
 
-  // Stats
-  statsBar: {
-    position: 'relative', zIndex: 2,
-    display: 'flex', gap: 40, marginTop: 64,
-    padding: '28px 48px',
-    background: 'rgba(255,255,255,0.03)',
-    backdropFilter: 'blur(12px)',
-    border: '1px solid rgba(255,255,255,0.05)',
-    borderRadius: 16, flexWrap: 'wrap', justifyContent: 'center',
-  },
-  statItem: { textAlign: 'center', minWidth: 80 },
-  statIcon: { fontSize: '1.2rem', display: 'block', marginBottom: 6 },
-  statValue: { fontSize: '1.7rem', fontWeight: 800, color: '#f1f1f3', letterSpacing: '-0.5px' },
-  statLabel: { fontSize: '0.72rem', color: '#5a5a66', fontWeight: 500, marginTop: 2, textTransform: 'uppercase', letterSpacing: '0.5px' },
+
 
   // Section
   section: { padding: '80px 24px' },
